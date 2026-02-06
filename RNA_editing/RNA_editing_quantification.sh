@@ -41,18 +41,16 @@ for bam in ${BAM_DIR}/*.bam; do
         fi
 
         # Run REDItools2
-        python ${REDITools} \
-            -f ${uniq_bam} \
-            -r ${REF_FASTA} \
-            -o ${out_txt} \
-            -S \
-            -C \
-            -bq ${BASE_QUAL} \
-            -q ${MAP_QUAL} \
-            -T ${THREADS} \
-            -mrl 50 \
-            -os 5
-
+        python "${REDITools}" \
+          -f "${uniq_bam}" \
+          -s 2 \
+          -r "${REF_FASTA}" \
+          -bq "${BASE_QUAL}" \
+          -q "${MAP_QUAL}" \
+          -C -T 2 \
+          -S -ss 5 -mrl 50 \
+          -os 5 \
+          -o "${out_txt}"python ${REDITools} \
         echo "[INFO] Finished ${sample}"
     ) &
 
